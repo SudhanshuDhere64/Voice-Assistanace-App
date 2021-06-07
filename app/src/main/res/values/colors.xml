@@ -7,4 +7,6 @@
     <color name="black_700">#242423</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#EA591F</color>
+    <color name="secondary">#0F1A20</color>
 </resources>

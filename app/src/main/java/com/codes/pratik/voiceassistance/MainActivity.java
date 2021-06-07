@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         setSupportActionBar(toolbar);
 
         slidingRootNav = new SlidingRootNavBuilder(this)
-                .withDragDistance(180)
+                .withDragDistance(220)
                 .withRootViewScale(0.75f)
-                .withRootViewElevation(25)
+                .withRootViewElevation(50)
                 .withToolbarMenuToggle(toolbar)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     @SuppressWarnings("rawtypes")
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.black_200))
-                .withTextTint(color(R.color.black_700))
-                .withSelectedIconTint(color(R.color.white_700))
-                .withSelectedTextTint(color(R.color.white_700));
+                .withIconTint(color(R.color.primary))
+                .withTextTint(color(R.color.primary))
+                .withSelectedIconTint(color(R.color.white))
+                .withSelectedTextTint(color(R.color.white));
     }
 
     private String[] loadScreenTitles() {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private Drawable[] loadScreenIcons() {
         TypedArray ta = getResources().obtainTypedArray(R.array.ld_activityScreenIcons);
         Drawable[] icons = new Drawable[ta.length()];
-        for (int i = 1; i < ta.length(); i++) {
+        for (int i = 0; i < ta.length(); i++) {
             int id = ta.getResourceId(i, 0);
             if (id != 0) {
                 icons[i] = ContextCompat.getDrawable(this, id);
@@ -147,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         }else if(position == POS_ABOUT){
             AboutFragment fragment = new AboutFragment();
             transaction.replace(R.id.screen, fragment);
+        }else if(position == POS_CLOSE){
+            slidingRootNav.closeMenu();
         }
 
         slidingRootNav.closeMenu();

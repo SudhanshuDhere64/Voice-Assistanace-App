@@ -3,7 +3,7 @@
 
     <string-array name="ld_activityScreenTitles">
 
-        <item></item>
+        <item>Close</item>
         <item>Assistant</item>
         <item>Help</item>
         <item>Settings</item>
@@ -13,12 +13,12 @@
     </string-array>
 
     <array name="ld_activityScreenIcons">
-        <item>@drawable/sample</item>
-        <item>@drawable/sample</item>
-        <item>@drawable/sample</item>
-        <item>@drawable/sample</item>
-        <item>@drawable/sample</item>
-        <item>@drawable/sample</item>
+        <item>@drawable/ic_close</item>
+        <item>@drawable/ic_assistant</item>
+        <item>@drawable/ic_help</item>
+        <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_customize</item>
+        <item>@drawable/ic_about</item>
     </array>
 
 </resources>
