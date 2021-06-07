@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setAdapter(adapter);
 
         adapter.setSelected(POS_ASSISTANT);
+
     }
 
 
@@ -98,8 +99,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         return new SimpleItem(screenIcons[position], screenTitles[position])
                 .withIconTint(color(R.color.primary))
                 .withTextTint(color(R.color.primary))
-                .withSelectedIconTint(color(R.color.white))
-                .withSelectedTextTint(color(R.color.white));
+                .withSelectedIconTint(color(R.color.secondary))
+                .withSelectedTextTint(color(R.color.secondary));
     }
 
     private String[] loadScreenTitles() {

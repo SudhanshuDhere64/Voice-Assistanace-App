@@ -8,6 +8,7 @@
     android:layout_marginEnd="50dp"
     android:layout_marginBottom="10dp"
     android:background="@drawable/background_navlabel"
+    android:elevation="8dp"
     android:orientation="horizontal"
     android:paddingLeft="24dp"
     android:paddingRight="24dp">
