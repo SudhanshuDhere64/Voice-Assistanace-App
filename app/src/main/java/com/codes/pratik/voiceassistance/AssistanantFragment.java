@@ -13,17 +13,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class AssistanantFragment extends Fragment {
 
-    Button speakBtn;
-    TextView text;
+    ImageView speakBtn;
+    TextView text,micTip;
     SpeechRecognizer recognizer;
     TextToSpeech tts;
+    GifImageView gifAssistant;
 
     public AssistanantFragment() {
         // Required empty public constructor
@@ -41,11 +45,11 @@ public class AssistanantFragment extends Fragment {
         initTextToSpeach();
 
         speakBtn.setOnClickListener(v->{
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
+                recognizer.startListening(intent);
 
-            Intent intent =  new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-            intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
-            recognizer.startListening(intent);
         });
 
         recognizeVoice();
@@ -57,6 +61,8 @@ public class AssistanantFragment extends Fragment {
     private void initViews(View view) {
         speakBtn = view.findViewById(R.id.speak);
         text = view.findViewById(R.id.textView);
+        micTip = view.findViewById(R.id.mictip);
+        gifAssistant = view.findViewById(R.id.assistantgif);
     }
 
     private void initTextToSpeach(){
@@ -87,6 +93,8 @@ public class AssistanantFragment extends Fragment {
                 @Override
                 public void onReadyForSpeech(Bundle params) {
 
+                    gifAssistant.setVisibility(View.VISIBLE);
+                    micTip.setVisibility(View.INVISIBLE);
                 }
 
                 @Override
