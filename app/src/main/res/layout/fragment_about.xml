@@ -4,16 +4,242 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".AboutFragment">
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About"
-        android:textColor="@color/primary"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/viga"
+        android:text=" About Us"
+        android:textColor="@color/white_700"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/primary"
+            app:cardCornerRadius="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="240dp">
+
+                <ImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:src="@drawable/pratik"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/viga"
+                    android:text="Pratik Kate"
+                    android:textColor="@color/secondary"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userImage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/userImage"
+                    app:layout_constraintTop_toTopOf="@+id/userImage" />
+
+                <ImageView
+                    android:id="@+id/userMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_email"
+                    app:layout_constraintStart_toStartOf="@+id/userImage"
+                    app:layout_constraintTop_toBottomOf="@+id/userImage" />
+
+                <TextView
+                    android:id="@+id/mailtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/viga"
+                    android:text="pratikrkate@gmail.com"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userMail"
+                    app:layout_constraintStart_toEndOf="@+id/userMail"
+                    app:layout_constraintTop_toTopOf="@+id/userMail" />
+
+                <ImageView
+                    android:id="@+id/userGit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_github"
+                    app:layout_constraintStart_toStartOf="@+id/userImage"
+                    app:layout_constraintTop_toBottomOf="@+id/userMail" />
+
+                <TextView
+                    android:id="@+id/gitTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/viga"
+                    android:text="GitHub.com/pratik-kate"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userGit"
+                    app:layout_constraintStart_toEndOf="@+id/userGit"
+                    app:layout_constraintTop_toBottomOf="@+id/userMail" />
+
+                <ImageView
+                    android:id="@+id/userPortfolio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_portfolio"
+                    app:layout_constraintStart_toStartOf="@+id/userImage"
+                    app:layout_constraintTop_toBottomOf="@+id/userGit" />
+
+                <TextView
+                    android:id="@+id/folioTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/viga"
+                    android:text="pratik-kate.github.io"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userPortfolio"
+                    app:layout_constraintStart_toEndOf="@+id/userPortfolio"
+                    app:layout_constraintTop_toBottomOf="@+id/userGit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/primary"
+            app:cardCornerRadius="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="240dp">
+
+                <ImageView
+                    android:id="@+id/userImage1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:src="@drawable/avatar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/userName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/viga"
+                    android:text="Sudhanshu Dhere"
+                    android:textColor="@color/secondary"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userImage1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/userImage1"
+                    app:layout_constraintTop_toTopOf="@+id/userImage1" />
+
+                <ImageView
+                    android:id="@+id/userMail1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_email"
+                    app:layout_constraintStart_toStartOf="@+id/userImage1"
+                    app:layout_constraintTop_toBottomOf="@+id/userImage1" />
+
+                <TextView
+                    android:id="@+id/mailtxt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/viga"
+                    android:text="sudhanshudhere64@gmail.com"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userMail1"
+                    app:layout_constraintStart_toEndOf="@+id/userMail1"
+                    app:layout_constraintTop_toTopOf="@+id/userMail1" />
+
+                <ImageView
+                    android:id="@+id/userGit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_github"
+                    app:layout_constraintStart_toStartOf="@+id/userImage1"
+                    app:layout_constraintTop_toBottomOf="@+id/userMail1" />
+
+                <TextView
+                    android:id="@+id/gitTxt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/viga"
+                    android:text="GitHub.com/sudhanshudhere64"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userGit1"
+                    app:layout_constraintStart_toEndOf="@+id/userGit1"
+                    app:layout_constraintTop_toBottomOf="@+id/userMail1" />
+
+                <ImageView
+                    android:id="@+id/userPortfolio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_portfolio"
+                    app:layout_constraintStart_toStartOf="@+id/userImage1"
+                    app:layout_constraintTop_toBottomOf="@+id/userGit1" />
+
+                <TextView
+                    android:id="@+id/folioTxt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/viga"
+                    android:text="sudhanshudhere64.github.io"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/userPortfolio1"
+                    app:layout_constraintStart_toEndOf="@+id/userPortfolio1"
+                    app:layout_constraintTop_toBottomOf="@+id/userGit1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

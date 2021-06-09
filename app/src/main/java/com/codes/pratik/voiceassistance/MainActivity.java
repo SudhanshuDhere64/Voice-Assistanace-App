@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private Drawable[] screenIcons;
 
     private SlidingRootNav slidingRootNav;
+    Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         setContentView(R.layout.activity_main);
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         }else if(position == POS_HELP){
             HelpFragment fragment = new HelpFragment();
             transaction.replace(R.id.screen, fragment);
+            toolbar.setTitle("");
         }else if(position == POS_SETTINGS){
             SettingsFragment fragment = new SettingsFragment();
             transaction.replace(R.id.screen, fragment);
