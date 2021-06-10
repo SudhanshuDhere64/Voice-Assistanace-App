@@ -64,8 +64,9 @@ public class AboutFragment extends Fragment {
         });
 
         gitSd.setOnClickListener(v->{
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sudhanshudhere64/"));
-            startActivity(browserIntent);
+            //Intent browserIntent = ;
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sudhanshudhere64/")));
+           // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://")));
         });
 
         folioSd.setOnClickListener(v->{
