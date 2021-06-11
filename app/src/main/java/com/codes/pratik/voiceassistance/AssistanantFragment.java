@@ -1,15 +1,24 @@
 package com.codes.pratik.voiceassistance;
 
+import android.bluetooth.BluetoothAdapter;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.ContactsContract;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +35,17 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class AssistanantFragment extends Fragment {
 
+    private static final String TAG = "TAG" ;
     ImageView speakBtn,logoPng,logoPng1;
     TextView text,micTip;
     SpeechRecognizer recognizer;
+    SpeechRecognizer callRec;
     TextToSpeech tts;
     GifImageView gifAssistant;
+    ArrayList<String> contactName;
+    ArrayList<String> contactNo;
+    String location,brain;
+    String remember = "remember";
 
     public AssistanantFragment() {
         // Required empty public constructor
@@ -45,7 +60,10 @@ public class AssistanantFragment extends Fragment {
         //initializing views
         initViews(view);
         //initializing tts;
+
         initTextToSpeech();
+        location="pune";
+        brain = "no data available";
 
         speakBtn.setOnClickListener(v->{
                 listen();
@@ -370,7 +388,87 @@ public class AssistanantFragment extends Fragment {
                         } else {
                             speak("There is no app available");
                         }
+                    }else if (command.contains("call")){
+                        Intent callIntent = new Intent(Intent.ACTION_CALL);
+                        callIntent.setData(Uri.parse("tel:"+"8530899088"));//change the number
+                        startActivity(callIntent);
+                    }else if (command.contains("message")){
+                        try {
+                            SmsManager smsManager = SmsManager.getDefault();
+                            smsManager.sendTextMessage("+918530899088", null, "hi", null, null);
+                            Toast.makeText(getContext(), "Message Sent",
+                                    Toast.LENGTH_LONG).show();
+                        } catch (Exception ex) {
+                            Toast.makeText(getContext(),ex.getMessage().toString(),
+                                    Toast.LENGTH_LONG).show();
+                            ex.printStackTrace();
+                        }
+                    }else if (command.contains("location")){
+                       speak("Your Current Location is"+location);
                     }
+                    else if(command.contains(remember)){
+                        brain = command;
+                        remember ="norem";
+                        speak("Okay");
+                    }else if (command.contains("remember") && command.contains("what")){
+                        speak("you told me to"+brain);
+                    }
+                    //basic chat
+                    else if (command.contains("hey") || command.contains("hi")){
+                        speak("hey");
+                    }
+                    else if (command.contains("how are you") || command.contains("are you fine")){
+                        speak("I am fine");
+                    }
+                    else if (command.contains("who are you") || command.contains("what is your name")){
+                        speak("I am your voice assistant");
+                    }
+                    else if (command.contains("joke")){
+                        speak("your life, hahahaha!");
+                    }
+                    else if (command.contains("designs") || command.contains("developed") || command.contains("created")){
+                        speak("Pratik created me");
+                    }
+                    else if (command.contains("what can you do") || command.contains("functions")){
+                        speak("I can do many things. such as, automating your smartphone, remember something for you, I can make calls for you as well as messages. and many more things");
+
+                    }
+                    else if (command.contains("morning")){
+                        speak("hey, Good Morning");
+                    }
+                    else if (command.contains("afternoon")){
+                        speak("hey, Good Afternoon");
+                    }
+                    else if (command.contains("on bluetooth")){
+                        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                        if (!mBluetoothAdapter.isEnabled()) {
+                            mBluetoothAdapter.enable();
+                            speak("Bluetooth turned on");
+                        }
+                    }
+                    else if (command.contains("off bluetooth")){
+                        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                        if (mBluetoothAdapter.isEnabled()) {
+                            mBluetoothAdapter.disable();
+                            speak("Bluetooth turned off");
+                        }
+                    }
+                    else if (command.contains("music")){
+                        MediaPlayer mediaPlayer;
+                        try {
+                            String PATH_TO_FILE = "/sdcard/music.mp3";
+                            mediaPlayer = new MediaPlayer();
+                            mediaPlayer.setDataSource(PATH_TO_FILE);
+                            mediaPlayer.prepare();
+                            mediaPlayer.start();
+                        }catch (Exception e){
+                            speak("Can't play music");
+                        }
+                    }else {
+                        speak("Sorry, I didn't understand");
+                    }
+
+
 
                     result.clear();
                 }
@@ -387,4 +485,6 @@ public class AssistanantFragment extends Fragment {
             });
         }
     }
+
+
 }
