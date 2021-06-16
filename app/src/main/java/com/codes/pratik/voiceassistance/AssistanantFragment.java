@@ -17,6 +17,7 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.Voice;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +31,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -93,12 +97,16 @@ public class AssistanantFragment extends Fragment {
     }
 
     private void initTextToSpeech(){
+        Set<String> a=new HashSet<>();
+        a.add("male");
+        Voice v=new Voice("en-us-x-sfg#male_2-local",new Locale("en","US"),400,200,true,a);
         tts = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(tts.getEngines().size() == 0){
                     Toast.makeText(getContext(), "Voice Engine is not available", Toast.LENGTH_SHORT).show();
                 }else{
+                    tts.setVoice(v);
                     speak("Hey, Your Voice assistant is here");
                 }
             }
